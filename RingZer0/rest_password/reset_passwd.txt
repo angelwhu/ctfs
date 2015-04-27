@@ -1,0 +1,58 @@
+伪随机 问题！
+竟然是用我自己的时间戳！！相差12个小时哇！！
+
+	$date=date('Y-m-d H:i:s',time());
+    echo $date."<br/>";
+
+    $time = mktime(20,34,50,4,15,2015);
+    echo $time.'<br/>';
+    srand($time);
+    $token = rand(1000000000000000,9999999999999999);
+    echo $token.'<br/>';
+	
+	
+	
+	
+经过测试发现，如果知道种子，就能知道随机数。
+1429079211\n
+9266390424687416
+9266390424687416
+
+1429079323
+5997196001466364
+
+9266390424687416
+
+点击reset 得到时间
+Wed, 15 Apr 2015 02:36:17 -0400
+
+使用mktime(2,36,17,4,15,2015)函数将时间转换为时间戳
+参照 http://kuiba.blog.51cto.com/2700551/806773
+
+然后生成随机数
+
+	
+_ga=GA1.2.517894686.1428888833; PHPSESSID=t8kfi2r0hnkoa26ti1h8c4f9s5
+
+if(isset($_POST['reset_username'])) {
+		srand(time());
+		$token =
+		rand(1000000000000000,9999999999999999);
+				
+		$success = '<div class="success">Reset password link has been sent to admin@youdontownthisemail.com. Please follow the link ...
+		$hSql->FastQuery('DELETE FROM chal_113 WHERE ip_addr = ?', array($_SERVER['REMOTE_ADDR']));
+		$hSql->FastQuery('insert into chal_113 values (?,?,?)', array($_SERVER['REMOTE_ADDR'], $token, time() + 3600));
+}
+
+if(URL_HANDLE::GetInstance()->get->k != null) {
+		$result = reset($hSql->FastQuery('SELECT * FROM chal_113 WHERE ip_addr = ? AND recovery_key = ? ', array($_SERVER['REMOTE_ADDR'], URL_HANDLE::GetInstance()->get->k)));
+		if($hSql->RowCount() != 0) {
+				if($result->expired_time > time()) {
+						$success = '<div class="success">Here\'s your new password: XXXXXXXXXXXXXX</div>';
+				} else {
+						$success = '<div class="error">Expired recovery key!</div>';
+				}
+		} else {
+				$success = '<div class="error">Invalid recovery key!</div>';
+		}
+}

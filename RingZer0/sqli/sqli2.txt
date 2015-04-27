@@ -1,0 +1,26 @@
+Username
+Username	Group	Description
+admin	admins	Administrateurs
+1	c2_group	3
+1	c2_group_membership	3
+1	c2_user	3
+
+c2_user
+id	username	password	
+1	admin	*AB5EBD7BD4F3EB9F0AD0B8DCE9A731A
+2	charles	*0F322DB0184005531209BAE2B53036C
+3	cedrick	*320BA53A2D2D6D3390EF2A4A4B41CAB
+
+
+
+c2_group_membership
+id	usernameid	groupnameid	
+1	1			1
+2	2			2
+3	3			2
+
+c2_group
+id	groupname	description	
+1	admins	Administrateurs
+2	users	Users
+3	flags	FLAG-sdfoip340e89rfuj34woit
