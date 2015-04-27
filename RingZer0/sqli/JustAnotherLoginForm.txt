@@ -1,0 +1,6 @@
+simple LADP injection
+just use * to inject
+username=*&password=*
+
+Reference: 
+http://drops.wooyun.org/tips/967
