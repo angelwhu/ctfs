@@ -331,6 +331,7 @@ bingo~成功调用并输出代码。
 ## 0x04 源码  
 
 
+[https://github.com/angelwhu/ctfs/blob/master/wooyun_puzzle_2016_3/php_rand.py](https://github.com/angelwhu/ctfs/blob/master/wooyun_puzzle_2016_3/php_rand.py)
 
 
 
