@@ -1,0 +1,11 @@
+Google:
+tab space lf
+
+whitespace interpreter
+
+http://ws2js.luilak.net/interpreter.html
+
+点击执行，即可得到Key。 
+
+Wow! Key is af8c21479c0472e2493bd614cc8eac4ab4e288d3 (this key is for [59.172.176.141] only..)
+

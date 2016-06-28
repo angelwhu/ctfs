@@ -1,0 +1,12 @@
+angelwhu@iZ28tivgyt5Z:~/tmp$ ./p7 2147483646
+-2147483645angelwhu@iZ28tivgyt5Z:~/tmp$ ./p7 2147483645
+-2147483646angelwhu@iZ28tivgyt5Z:~/tmp$ ./p7 2147483644
+-2147483647angelwhu@iZ28tivgyt5Z:~/tmp$ ./p7 2147483643
+-2147483648angelwhu@iZ28tivgyt5Z:~/tmp$ ./p7 2147483642
+1angelwhu@iZ28tivgyt5Z:~/tmp$ ./p7 2147483643
+-2147483648angelwhu@iZ28tivgyt5Z:~/tmp$ 
+
+http://wargame.kr:8080/php_c/
+
+d1=2147483643&d2=-2147483648
+

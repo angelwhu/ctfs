@@ -1,0 +1,2 @@
+parse_str($_SERVER['QUERY_STRING']); //变量覆盖漏洞   
+覆盖 $query_parts  即可注入。  

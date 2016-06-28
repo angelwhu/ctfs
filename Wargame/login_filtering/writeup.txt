@@ -1,0 +1,61 @@
+php trick  
+
+XDCTF2014有这道题目:
+https://www.leavesongs.com/PENETRATION/Mini-XCTF-Writeup.html  
+
+写代码fuzz:
+
+<?php  
+
+/*
+create table user(
+ idx int auto_increment primary key,
+ id char(32),
+ ps char(32)
+);
+*/
+
+
+	mysql_connect("localhost","root","");
+	mysql_select_db ("test");
+	mysql_query("set names utf8");
+
+	//$id = mysql_real_escape_string(trim($_POST['id']));
+	$ps = "blueh4g1234ps";
+	for($i = 0 ; $i < 256 ; $i++){
+		$c = chr($i);
+		$id = "blueh4g".$c;
+		$row=mysql_fetch_array(mysql_query("select * from user where id='$id' and ps=md5('$ps')"));
+
+		if(isset($row['id']))
+		{
+			if($id=='blueh4g')
+			{
+				//echo "your account is blocked";
+			}
+			else
+			{
+				echo $i . $c . ":" . $id . "<br />";
+				echo "login ok"."<br />";
+				echo "Password : ".$key;
+			}
+		}
+		else
+		{
+			//echo "wrong..";
+		}
+	}
+
+?>
+
+
+得到许多结果，其中一个：  
+194:guest?
+login ok
+
+
+
+
+竟然可以用大小写Bypass。
+mysql无视大小写!!!  
+  

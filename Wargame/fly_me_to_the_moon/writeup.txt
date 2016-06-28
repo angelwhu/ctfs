@@ -1,0 +1,9 @@
+http://wargame.kr:8080/fly_me_to_the_moon/token.php
+5872
+
+http://wargame.kr:8080/fly_me_to_the_moon/high-scores.php
+token=5095&score=100000000000000000000
+
+
+Congratulation!!
+Key : 3d26df39573757cab54c420d76ba37f3d403f4cb

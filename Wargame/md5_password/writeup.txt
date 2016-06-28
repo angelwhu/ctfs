@@ -1,0 +1,10 @@
+md5($ps,true) 有时会产生单引号。
+http://dc406.com/home/393-sql-injection-with-raw-md5-hashes.html
+  
+输入文中fuzz的结果：  129581926211651571912466741651878684928
+
+hello admin!
+Password : 96756acef13354c76bca3f9c331b82b00a983be6
+
+
+

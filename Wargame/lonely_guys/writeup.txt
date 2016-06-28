@@ -1,0 +1,1 @@
+python .\sqli_orderby.py 'select authkey from authkey'  
