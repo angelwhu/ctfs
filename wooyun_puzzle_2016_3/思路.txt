@@ -1,0 +1,21 @@
+﻿简单思路记下：
+
+1. 线性同余算法，得到secret_key
+poc见python文件。  
+
+2. get_defined_functions 得到定义函数 
+fd_show_source  得到sandbox 源码
+注意： 加上X-Requested-With : XMLHttpRequest 头，才能得到json输出数据。
+"user":["rand_str","output","check_csrf_toke
+n","show_form_page","show_error_page","_fd_init","fd_show_source","fd_config","fd_error","fg_safebox"]
+
+fd_config
+{"role":{"admin":["read"],"user":["view","alist","random"]}}
+
+3. 如何绕过sandbox读取flag.php内容 
+
+通过utf-8编码得到user权限。  
+ 
+
+
+

