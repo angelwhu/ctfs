@@ -1,0 +1,138 @@
+c=echo "<br />**********<br />";
+include("php://filter/read=convert.base64-encode/resource=index.php");
+echo "<br />"**********<br />";
+
+<?php
+session_start();
+include('./config.php');
+@$username=$_POST['username'];
+@$password=$_POST['password'];
+@include($_GET['homework']);
+$username=intval($username);
+$password=md5($password);
+$result=mysql_query("select * from info where username='$username'&&password='$password'");
+$row=mysql_fetch_array($result);
+if(empty($row))
+{
+	print("Ã»ÓÐ¸ÃÑ§Éú»òÕßÃÜÂë´íÁËÒ²ÓÐ¿ÉÄÜÊÇÄãµÄÑ§ºÅ´íÁË.....×ÜÖ®ÓÐÊ²Ã´µØ·½´íÁË¡£");
+	exit();
+}else
+{
+	$_SESSION['login']=1;
+	$_SESSION['xuehao']=$row['username'];
+	header("Location: ./homework.php");
+<?php
+	$db_user='web';
+	$db_password='WebPaSSw0rd!';
+	$db_host='localhost';
+	$db_database='web';
+	$con =mysql_connect($db_host,$db_user,$db_password) or die('Not connect');
+	mysql_select_db($db_database,$con) or dir('Not select');
+	mysql_query('SET NANES UTF8');
+?>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+</html>
+<?php
+session_start();
+if($_SESSION['login']!=1){
+	exit('Plz Login');
+}
+if(preg_match('/read/',$_GET['homework']))
+{
+exit('Plz Don\'t read my code');
+}
+@include($_GET['homework']);
+include('./config.php');
+$result=mysql_query("select * from info where username='$_SESSION[xuehao]'");
+$row=mysql_fetch_array($result);
+echo "Welcome".$row['name']."</B>to Homework Center.<br />";
+echo "<img src='".$row['pic']."'><br />";
+echo "<a href='./homework.php?homework=homework.txt'>homework</a>";
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+</html>
+<?php
+include('./config.php');
+session_start();
+function make_password()
+{
+	$password="";
+	$chars="abcdefghijklmnopqrstuvwxyz1234567890-=!@#$%^&*_";
+	for($i=0;$i<8;$i++)
+	{
+		$password.=$chars[rand(0,46)];
+	}
+	return $password;
+}
+
+if(isset($_POST['captcha_code'])){
+	// code for check server side validation
+        $captcha_code = (string)$_POST['captcha_code'];
+	if(empty($_SESSION['captcha_code'] ) || strcasecmp($_SESSION['captcha_code'], $captcha_code) != 0){  
+		 exit('éªŒè¯ç é”™è¯¯');
+	}else{// Captcha verification is Correct. Final Code Execute here!		
+		
+	}
+} else {
+	exit('Get out!');
+}
+//unset($_SEESION['captcha_code']);
+session_destroy();
+if(isset($_POST['upload'])){
+$filename = $_FILES['uploaded']['name'];
+$filetype = $_FILES['uploaded']['type'];
+$filesize = $_FILES['uploaded']['size'];
+$tmpname = $_FILES['uploaded']['tmp_name'];
+$uploaddir = './upload/';
+$target_path = $uploaddir.basename($filename);
+$fileext = substr(strrchr($filename,"."),1);
+if(($fileext == 'gif')&&($filetype == "image/gif")){
+	{
+		if(move_uploaded_file($tmpname,$target_path))
+		{
+		}
+	}
+	$im =imagecreatefromgif($target_path);
+	srand(time());
+	$newfilename = strval(rand()).".gif";
+	$newimagepath = $uploaddir.$newfilename;
+	imagegif($im,$newimagepath);
+	unlink($target_path);
+}else if(($fileext == 'jpg')&&($filetype == "image/jpeg"))
+{
+	if(move_uploaded_file($tmpname,$target_path))
+		{
+		}
+	$im =imagecreatefromjpeg($target_path);
+	srand(time());
+	$newfilename = strval(rand()).".jpg";
+	$newimagepath = $uploaddir.$newfilename;
+	imagejpeg($im,$newimagepath);
+	unlink($target_path);
+}else if (($fileext=='png')&&($filetype=="image/png"))
+{
+	if(move_uploaded_file($tmpname,$target_path))
+		{
+		}
+	$im =imagecreatefromjpeg($target_path);
+	srand(time());
+	$newfilename = strval(rand()).".png";
+	$newimagepath = $uploaddir.$newfilename;
+	imagejpeg($im,$newimagepath);
+	unlink($target_path);
+}
+}
+if(isset($_POST['name'])&&isset($_POST['age']))
+{
+	$name=substr($_POST['name'],0,6);
+	$age=intval($_POST['age']);
+	$username=	('./id.txt');
+	$password=make_password();
+	file_put_contents('./id.txt',intval($username)+1);
+	mysql_query("insert into info(username,password,name,pic,age)values('$username',md5('$password'),'$name','$newimagepath',$age)");
+	mysql_close($con);
+	print("ç”ŸæˆæˆåŠŸï¼Œå­¦å·:$username,å¯†ç ï¼š$password");
+	print("<a href='./index.html'>å›žä¸»é¡µ</a>");
+}
+?>

