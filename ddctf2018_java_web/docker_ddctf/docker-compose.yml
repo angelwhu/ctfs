@@ -1,0 +1,28 @@
+mysql_db:
+    image: mysql:5.7
+    command: bash /backup/my-entrypoint.sh
+    environment:
+        - MYSQL_ROOT_PASSWORD=mySqlpAssw0rd
+    volumes:
+        - ./db/backup:/backup
+        - ./db/data:/var/lib/mysql
+tomcat:
+    image: tomcat:8.0-jre8
+    links: 
+        - mysql_db:mysql_db
+        - tomcat_2:tomcat_2
+    volumes:
+        - ./web/webapps:/usr/local/tomcat/webapps
+        - ./web/flag:/flag
+        - ./web/logs:/usr/local/tomcat/logs
+    ports:
+        - "8883:8080"
+tomcat_2:
+    image: angelwhu/ddctf_tomcat:3.1
+    #privileged: true
+    command: gosu tomcat bash /flag/docker-entrypoint.sh
+    volumes:
+        - ./web2/webapps:/usr/local/tomcat/webapps
+        - ./web2/flag:/flag
+    #ports:
+    #    - "8885:8080"
